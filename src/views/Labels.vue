@@ -1,7 +1,6 @@
 <template>
   <div>
-    Labels
-    <Nav />
+    <Layout>标签</Layout>
   </div>
 </template>
 
