@@ -1,6 +1,7 @@
 <template>
   <div>
-    <router-view></router-view>
+    Labels
+    <Nav />
   </div>
 </template>
 
@@ -8,5 +9,5 @@
 export default {};
 </script>
 
-<style>
+<style  scoped>
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <router-view></router-view>
+    statistics
+    <Nav />
   </div>
 </template>
 
@@ -8,5 +9,6 @@
 export default {};
 </script>
 
-<style>
+<style  scoped>
 </style>
+
