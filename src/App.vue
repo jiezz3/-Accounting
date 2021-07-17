@@ -5,12 +5,13 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style lang="scss">
-@import "~@/assets/style/reset.scss";
-@import "~@/assets/style/helper.scss";
+@import "src/assets/style/reset.scss";
+@import "src/assets/style/helper.scss";
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
