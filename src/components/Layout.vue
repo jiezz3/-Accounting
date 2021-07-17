@@ -1,14 +1,16 @@
 <template>
   <div class="nav-warpper">
-    <div class="content">
+    <div class="content" :class="classPrefix && `${classPrefix}-content`">
       <slot />
     </div>
     <Nav />
   </div>
 </template>
 
-<script>
-export default {};
+<script lang='ts'>
+export default {
+  props: ["classPrefix"],
+};
 </script>
 <style lang="scss" scoped>
 .content {
