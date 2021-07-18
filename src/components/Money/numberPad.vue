@@ -1,37 +1,57 @@
 <template>
   <div class="numberPad">
-    <div class="number">100</div>
+    <div class="number">{{ output }}</div>
     <div class="button">
-      <button>1</button>
-      <button>2</button>
-      <button>3
-      </button
-      >
-      <button>删除</button>
-      <button>4</button>
-      <button>5
-      </button
-      >
-      <button>6</button>
-      <button>清空</button>
-      <button>7
-      </button
-      >
-      <button>8</button>
-      <button>9</button>
-      <button class="ok">OK
-      </button
-      >
-      <button class="zero">0</button>
-      <button>.</button>
+      <button @click="count">1</button>
+      <button @click="count">2</button>
+      <button @click="count">3</button>
+      <button @click="deleteInput">删除</button>
+      <button @click="count">4</button>
+      <button @click="count">5</button>
+      <button @click="count">6</button>
+      <button @click="remove">清空</button>
+      <button @click="count">7</button>
+      <button @click="count">8</button>
+      <button @click="count">9</button>
+      <button class="ok">OK</button>
+      <button @click="count" class="zero">0</button>
+      <button @click="count">.</button>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
-export default {
-  name: 'numberPad'
-};
+<script lang="ts">
+import Vue from 'vue';
+import {Component} from 'vue-property-decorator';
+
+@Component
+export default class Type extends Vue {
+  output = '0';
+
+  count(event: MouseEvent) {
+    if (this.output.length >= 16) {return;}
+    const button = event.target as HTMLButtonElement;
+    const input = button.textContent as string;
+    if (this.output === '0' && input !== '0' && input !== '.') {
+      this.output = input;
+      return;
+    }
+    if (this.output.indexOf('.') >= 0)
+      if (input === '.') {
+        return;
+      }
+    this.output += input;
+  }
+
+  deleteInput() {
+    if (this.output.length <= 1) {return;}
+    this.output = this.output.slice(0, -1);
+  }
+
+  remove() {
+    this.output = '0';
+  }
+}
 </script>
 
 <style lang='scss' scoped>

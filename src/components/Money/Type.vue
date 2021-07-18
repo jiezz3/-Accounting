@@ -10,15 +10,17 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
+
 @Component
-export default class Type extends Vue{
-  type='-'//-号代表支出，+号代表收入
-  changeType(type:string) {
-    if(type!=='+'&&type!=='-'){
-      throw new Error('type is unknown')
+export default class Type extends Vue {
+
+  type = '-';//-号代表支出，+号代表收入
+  changeType(type: string) {
+    if (type !== '+' && type !== '-') {
+      throw new Error('type is unknown');
     }
-  this.type = type
-     }
+    this.type = type;
+  }
 }
 </script>
 
