@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-warpper">
+  <div class="nav-wrapper">
     <div class="content" :class="classPrefix && `${classPrefix}-content`">
       <slot />
     </div>
@@ -16,7 +16,7 @@ export default {
 .content {
   flex-grow: 1;
 }
-.nav-warpper {
+.nav-wrapper {
   display: flex;
   flex-direction: column;
   height: 100vh;

@@ -1,16 +1,27 @@
 <template>
   <div class="type">
     <ul>
-      <li class="selected">支出</li>
-      <li>收入</li>
+      <li :class="type==='-'&&'selected'" @click="changeType('-')">支出</li>
+      <li :class="type==='+'&&'selected'" @click="changeType('+')">收入</li>
     </ul>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="js">
+
 export default {
-  name: 'Type'
-};
+  name: 'Type',
+  data() {
+    return {
+      type: '-'//-号代表支出，+号代表收入
+    }
+  },
+  methods: {
+    changeType(type) {
+      this.type = type
+    }
+  }
+}
 </script>
 
 <style lang='scss' scoped>

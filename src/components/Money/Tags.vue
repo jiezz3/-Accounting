@@ -30,8 +30,7 @@ export default {
       background: rgb(217, 217, 217);
       padding: 0 16px;
       height: 24px;
-      $height: 24px;
-      border-radius: $height/2;
+      border-radius:12px;
       margin: 6px;
       display: flex;
       align-content: center;
