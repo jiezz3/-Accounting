@@ -44,7 +44,10 @@ export default class Type extends Vue {
   }
 
   deleteInput() {
-    if (this.output.length <= 1) {return;}
+    if (this.output.length <= 1) {
+      this.output='0';
+      return;
+    }
     this.output = this.output.slice(0, -1);
   }
 
