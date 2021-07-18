@@ -32,7 +32,7 @@ export default class Type extends Vue {
     if (this.output.length >= 16) {return;}
     const button = event.target as HTMLButtonElement;
     const input = button.textContent as string;
-    if (this.output === '0' && input !== '0' && input !== '.') {
+    if (this.output === '0'  && input !== '.') {
       this.output = input;
       return;
     }
