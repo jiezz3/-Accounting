@@ -13,7 +13,8 @@
       <button @click="count">7</button>
       <button @click="count">8</button>
       <button @click="count">9</button>
-      <button class="ok">OK</button>
+      <button @click="ok"
+          class="ok">OK</button>
       <button @click="count" class="zero">0</button>
       <button @click="count">.</button>
     </div>
@@ -42,7 +43,11 @@ export default class Type extends Vue {
       }
     this.output += input;
   }
-
+ok(){
+  this.$emit("update:output",this.output)
+  window.alert("提交成功")
+  this.output='0'
+}
   deleteInput() {
     if (this.output.length <= 1) {
       this.output='0';
