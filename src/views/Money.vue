@@ -3,7 +3,7 @@
     <Tags :tag-name.sync="tags" @update:selected="updateTags"/>
     <Notes @update:value="updateNotes"/>
     <Type :value.sync="record.type"/>
-    <numberPad @update:output="updateOutput"/>
+    <numberPad :value.sync="record.amount"/>
 
   </Layout>
 </template>
@@ -41,9 +41,7 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
 
-  updateOutput(value: string) {
-    this.record.amount = parseFloat(value);
-  }
+
 }
 </script>
 <style>

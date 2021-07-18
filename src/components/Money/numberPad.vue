@@ -23,12 +23,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Type extends Vue {
-  output = '0';
 
+@Prop() value!:number
+   output=this.value.toString()
   count(event: MouseEvent) {
     if (this.output.length >= 16) {return;}
     const button = event.target as HTMLButtonElement;
@@ -44,8 +45,8 @@ export default class Type extends Vue {
     this.output += input;
   }
 ok(){
-  this.$emit("update:output",this.output)
-  window.alert("提交成功")
+  this.$emit("update:value",this.output)
+  // window.alert("提交成功")
   this.output='0'
 }
   deleteInput() {
