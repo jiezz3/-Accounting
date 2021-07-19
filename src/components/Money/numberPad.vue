@@ -46,7 +46,8 @@ export default class Type extends Vue {
   }
 ok(){
   this.$emit("update:value",this.output)
-  // window.alert("提交成功")
+  this.$emit('submit',this.output)
+  window.alert("提交成功")
   this.output='0'
 }
   deleteInput() {
