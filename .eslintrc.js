@@ -15,6 +15,11 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    'no-undef': 'off',
+    'vue/no-unused-vars': 'off',
+    'vue/require-v-for-key': 'off',
+    'no-unused-vars': 'off',
+    'vue/no-unused-components': 'off'
   },
   overrides: [
     {

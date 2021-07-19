@@ -1,5 +1,5 @@
 <template>
-  <Layout class-prefix="layout">{{ recordList }}
+  <Layout class-prefix="layout">
     <Tags :tag-name.sync="tags" @update:selected="updateTags"/>
     <Notes @update:value="updateNotes"/>
     <Type :value.sync="record.type"/>
@@ -17,24 +17,18 @@ import Tags from '@/components/Money/Tags.vue';
 import Notes from '@/components/Money/Notes.vue';
 import Type from '@/components/Money/Type.vue';
 import NumberPad from '@/components/Money/numberPad.vue';
-import {createLogger} from 'vuex';
+import model from '@/model';
 
-type Record = {
-  tags: string[]
-  notes: string
-  type: string
-  amount: number
-  creatAt?: Date
-}
+const recordList = model.fetch();
 @Component({
   components: {NumberPad, Type, Notes, Tags},
 })
 export default class Money extends Vue {
   tags = ['衣', '食', '住', '行'];
-  record: Record = {
+  record: RecordItem = {
     tags: [], notes: '', type: '+', amount: 0,
   };
-  recordList: Record[] = JSON.parse(window.localStorage.getItem('recordList') || '[]');
+  recordList: RecordItem[] = recordList;
 
   updateTags(value: string[]) {
     this.record.tags = value;
@@ -52,8 +46,7 @@ export default class Money extends Vue {
 
   @Watch('recordList')
   onRecordListChange() {
-
-    window.localStorage.setItem('recordList', JSON.stringify(this.recordList));
+    model.save(this.recordList);
   }
 }
 </script>
