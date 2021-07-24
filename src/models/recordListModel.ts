@@ -1,4 +1,4 @@
-const model={
+const recordListModel={
   fetch(){
     return JSON.parse(window.localStorage.getItem('recordList')||'[]')
   },
@@ -6,4 +6,4 @@ const model={
     window.localStorage.setItem('recordList', JSON.stringify(data))
   },
 }
-export default model
+export default recordListModel

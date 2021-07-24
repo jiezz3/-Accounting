@@ -12,12 +12,13 @@ export default {}
 @import "src/assets/style/reset.scss";
 @import "src/assets/style/helper.scss";
 
-#app {
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #333;
   font-family: $font-hei;
   line-height: 1.5;
   font-size: 16px;
+  background:#f5f5f5;
 }
 </style>
