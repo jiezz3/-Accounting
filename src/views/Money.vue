@@ -1,7 +1,7 @@
 <template>
   <Layout class-prefix="layout">
     <Tags :tag-name.sync="tags" @update:selected="updateTags"/>
-    <Notes @update:value="updateNotes"/>
+    <Notes filename="备注" placeholder="在这里输入备注" @update:value="updateNotes"/>
     <Type :value.sync="record.type"/>
     <numberPad :value.sync="record.amount" @submit="getList"/>
 
