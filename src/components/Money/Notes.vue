@@ -28,7 +28,7 @@ export default class Type extends Vue {
 <style lang='scss' scoped>
 .notes {
   font-size: 14px;
-  background: rgb(245, 245, 245);
+  //background: rgb(245, 245, 245);
 
   > label {
     padding: 0 15px;
