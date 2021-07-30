@@ -1,5 +1,7 @@
 <template>
+
   <Layout class-prefix="layout">
+    {{record}}
     <Tags :tag-name.sync="tags" @update:selected="updateTags"/>
     <Notes filename="备注" placeholder="在这里输入备注" @update:value="updateNotes"/>
     <Type :value.sync="record.type"/>

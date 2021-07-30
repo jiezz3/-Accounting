@@ -2,7 +2,7 @@
   <div class="notes">
     <label
     >{{this.filename}}
-      <input type="text" v-model="value" :placeholder="this.placeholder"/>
+      <input type="text" :value="value" @input="onValueChange($event.target.value)" :placeholder="this.placeholder"/>
     </label>
   </div>
 </template>
@@ -13,7 +13,7 @@ import {Component, Prop, Watch} from 'vue-property-decorator';
 
 @Component
 export default class Type extends Vue {
-  @Prop({default:''}) value!:string;
+  @Prop({default:''})readonly value!:string;
   @Prop() filename!: string;
   @Prop() placeholder?:string
 
