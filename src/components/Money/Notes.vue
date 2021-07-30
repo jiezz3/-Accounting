@@ -13,9 +13,9 @@ import {Component, Prop, Watch} from 'vue-property-decorator';
 
 @Component
 export default class Type extends Vue {
+  @Prop({default:''}) value!:string;
   @Prop() filename!: string;
   @Prop() placeholder?:string
-  value = '';
 
   @Watch('value')
 
