@@ -1,3 +1,5 @@
+import clone from '@/lib/clone';
+
 const recordListModel={
   data:[] as RecordItem[],
   fetch(){
@@ -8,5 +10,10 @@ const recordListModel={
     window.localStorage.setItem('recordList',
       JSON.stringify(this.data))
   },
+  create(record:RecordItem){
+    const record2:RecordItem = clone(record)
+    record2.creatAt = new Date();
+    this.data.push(record2);
+  }
 }
 export default recordListModel
