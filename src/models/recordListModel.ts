@@ -1,9 +1,12 @@
 const recordListModel={
+  data:[] as RecordItem[],
   fetch(){
-    return JSON.parse(window.localStorage.getItem('recordList')||'[]')
+    this.data=JSON.parse(window.localStorage.getItem('recordList')||'[]')
+    return this.data
   },
-  save(data:RecordItem[]){
-    window.localStorage.setItem('recordList', JSON.stringify(data))
+  save(){
+    window.localStorage.setItem('recordList',
+      JSON.stringify(this.data))
   },
 }
 export default recordListModel
