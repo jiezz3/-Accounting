@@ -19,7 +19,6 @@ import Notes from '@/components/Money/Notes.vue';
 import Type from '@/components/Money/Type.vue';
 import NumberPad from '@/components/Money/numberPad.vue';
 import recordListModel from '@/models/recordListModel';
-import tagListModel from '@/models/tagListModel';
 const recordList = recordListModel.fetch();
 @Component({
   components: {NumberPad, Type, Notes, Tags},

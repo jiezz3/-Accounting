@@ -17,7 +17,6 @@
 </template>
 
 <script lang='ts'>
-import tagListModel from '@/models/tagListModel';
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 import Notes from '@/components/Money/Notes.vue';
@@ -29,8 +28,7 @@ export default class EditLabel extends Vue {
   tag?:{id:string,name:string}=undefined
   created() {
     const id = this.$route.params.id;
-    tagListModel.fetch();
-    const tags = tagListModel.data;
+    const tags =window.tagList;
     const tag = tags.filter((item) => item.id === id)[0];
     if (tag) {
       this.tag=tag
@@ -39,13 +37,13 @@ export default class EditLabel extends Vue {
     }
   }
   updateTag(name:string){
-    if(this.tag) {tagListModel.update(this.tag.id,name);}
+    if(this.tag) {window.updateTag(this.tag.id,name);}
   }
   removeTag(){
     if(this.tag)
-   if (tagListModel.remove(this.tag.id)){
+   if (window.removeTag(this.tag.id)){
      this.$router.back()
-   }
+   }else {window.alert('删除失败')}
   }
   goBack(){
     this.$router.back()
