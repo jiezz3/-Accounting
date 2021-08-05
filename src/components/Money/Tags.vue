@@ -1,7 +1,7 @@
 <template>
   <div class="tags">
     <ul class="current">
-      <li v-for="tag in tagName" :key="tag.id" @click="pick(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
+      <li v-for="tag in tagList" :key="tag.id" @click="pick(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
         {{ tag.name }}
       </li>
     </ul>
@@ -17,7 +17,7 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Type extends Vue {
-  @Prop() tagName: string[] | undefined;
+  tagList=window.tagList
   selectedTags: string[] = [];
 
   pick(tag: string) {
@@ -33,8 +33,9 @@ export default class Type extends Vue {
   }
   create(){
     const name=window.prompt("新增请输入标签名")
-    if(this.tagName)
-    this.$emit('update:tagName',[...this.tagName,name])
+    if(this.tagList)
+      if(name)
+    window.createTag(name)
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 
   <Layout class-prefix="layout">
-    <Tags :tag-name.sync="tags" @update:selected="updateTags"/>
+    <Tags />
     <Notes filename="备注" placeholder="在这里输入备注" @update:value="updateNotes"/>
     <Type :value.sync="record.type"/>
     <numberPad :value.sync="record.amount" @submit="getList"/>
@@ -28,9 +28,7 @@ export default class Money extends Vue {
   };
   recordList: RecordItem[] = window.recordList;
 
-  updateTags(value: string[]) {
-    this.record.tags = value;
-  }
+
 
   updateNotes(value: string) {
     this.record.notes = value;
