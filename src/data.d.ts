@@ -19,6 +19,7 @@ type TagListModel = {
 }
 interface Window{
   tagList:Tag[]
+  findTag:(id:string)=>Tag
   createTag:(name:string)=>void
   removeTag:(id:string)=>boolean
   updateTag:(id:string,name:string)=> 'success' | 'not_found' | 'duplicated'
