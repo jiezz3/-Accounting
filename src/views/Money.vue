@@ -12,14 +12,12 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import {Component, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 
 import Tags from '@/components/Money/Tags.vue';
 import Notes from '@/components/Money/Notes.vue';
 import Type from '@/components/Money/Type.vue';
 import NumberPad from '@/components/Money/numberPad.vue';
-import recordListModel from '@/models/recordListModel';
-const recordList = recordListModel.fetch();
 @Component({
   components: {NumberPad, Type, Notes, Tags},
 })
@@ -28,7 +26,7 @@ export default class Money extends Vue {
   record: RecordItem = {
     tags: [], notes: '', type: '+', amount: 0,
   };
-  recordList: RecordItem[] = recordList;
+  recordList: RecordItem[] = window.recordList;
 
   updateTags(value: string[]) {
     this.record.tags = value;
@@ -39,12 +37,7 @@ export default class Money extends Vue {
   }
 
   getList() {
-    recordListModel.create(this.record)
-  }
-
-  @Watch('recordList')
-  onRecordListChange() {
-    recordListModel.save();
+   window.createRecord(this.record)
   }
 }
 </script>
