@@ -12,12 +12,12 @@ import Vue from 'vue';
 import {Component, Prop, Watch} from 'vue-property-decorator';
 
 @Component
-export default class Type extends Vue {
+export default class Notes extends Vue {
   @Prop({default:''})readonly value!:string;
   @Prop() filename!: string;
   @Prop() placeholder?:string
 
-  @Watch('value')
+
 
   onValueChange(value: string) {
     this.$emit('update:value', value);

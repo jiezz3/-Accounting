@@ -38,7 +38,6 @@ const tagListModel: TagListModel = {
     }
   },
   create(name:string) {
-
     const names = this.data.map(item => item.name);
     if (names.indexOf(name) >= 0) {return 'duplicated';} else {
       const id=createId().toString()

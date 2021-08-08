@@ -27,26 +27,31 @@ import Button from '@/components/Button.vue';
   components: {Button, Notes}
 })
 export default class EditLabel extends Vue {
-  tag?: { id: string, name: string } = undefined;
+  get tag() {
+    return this.$store.state.currentTag;
+  }
 
   created() {
-    this.tag = window.findTag(this.$route.params.id);
+    const id = this.$route.params.id;
+    this.$store.commit('fetchTags')
+    this.$store.commit('setCurrentTag', id);
     if (!this.tag) {
       this.$router.replace('404');
     }
   }
 
   updateTag(name: string) {
-    if (this.tag) {window.updateTag(this.tag.id, name);}
+    if (this.tag)
+    {
+      this.$store.commit('updateTag',
+          {id:this.tag.id,name});
+    }
   }
 
   removeTag() {
     if (this.tag)
-      if (window.removeTag(this.tag.id)) {
-        this.$router.back();
-      } else {window.alert('删除失败');}
+      this.$store.commit('removeTag', this.tag.id)
   }
-
   goBack() {
     this.$router.back();
   }

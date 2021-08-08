@@ -17,9 +17,13 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Type extends Vue {
-  tagList=window.tagList
   selectedTags: string[] = [];
-
+  get tagList(){
+    return this.$store.state.tagList
+  }
+created(){
+  this.$store.commit('fetchTags')
+}
   pick(tag: string) {
     const index = this.selectedTags.indexOf(tag);
     if (tag) {
@@ -33,9 +37,8 @@ export default class Type extends Vue {
   }
   create(){
     const name=window.prompt("新增请输入标签名")
-    if(this.tagList)
-      if(name)
-    window.createTag(name)
+      if(!name){return window.alert('不能为空')}
+    this.$store.commit('createTag',name)
   }
 }
 </script>
