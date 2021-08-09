@@ -26,7 +26,7 @@ import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
 
 @Component
-export default class Type extends Vue {
+export default class NumberPad extends Vue {
 
 @Prop() value!:number
    output=this.value.toString()

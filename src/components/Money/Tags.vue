@@ -1,7 +1,9 @@
 <template>
   <div class="tags">
     <ul class="current">
-      <li v-for="tag in tagList" :key="tag.id" @click="pick(tag)" :class="{selected:selectedTags.indexOf(tag)>=0}">
+      <li v-for="tag in tagList" :key="tag.id" @click="pick(tag)"
+          :class="{selected:selectedTags.indexOf(tag)>=0}"
+      >
         {{ tag.name }}
       </li>
     </ul>
@@ -13,10 +15,10 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import {Component, Prop} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 
 @Component
-export default class Type extends Vue {
+export default class Tags extends Vue {
   selectedTags: string[] = [];
   get tagList(){
     return this.$store.state.tagList

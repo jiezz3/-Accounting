@@ -2,7 +2,10 @@
   <ul class="tabs">
     <li @click="select(item)" v-for="item in dataSource"
         :key="item.value" :class="{selected:item.value===value,
-        [classPrefix+'-item']:classPrefix}">{{ item.text }}
+        [classPrefix+'-item']:classPrefix}"
+        class="tabs-item"
+    >{{ item.text }}
+
     </li>
   </ul>
 </template>
@@ -26,24 +29,26 @@ this.$emit('update:value',item.value)
 
 <style lang='scss' scoped>
 .tabs {
-  background: rgb(196, 196, 196);
+  background: #C4C4C4;
   display: flex;
-    > li {
-      width: 50%;
-      display: flex;
-      justify-content: center;
-      padding: 22px;
-      position: relative;
-
-      &.selected::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 4px;
-        width: 100%;
-        background: #333;
-      }
+  text-align: center;
+  font-size: 24px;
+  &-item {
+    width: 50%;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &.selected::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #333;
     }
+  }
 }
 </style>
