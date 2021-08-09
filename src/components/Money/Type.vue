@@ -1,8 +1,10 @@
 <template>
   <div class="type">
     <ul>
-      <li :class="value==='-'&&'selected'" @click="changeType('-')">支出</li>
-      <li :class="value==='+'&&'selected'" @click="changeType('+')">收入</li>
+      <li :class="{[classPrefix+'-item']:classPrefix,selected:value==='-'}"
+          @click="changeType('-')">支出</li>
+      <li :class="{[classPrefix+'-item']:classPrefix,selected:value==='+'}"
+          @click="changeType('+')">收入</li>
     </ul>
   </div>
 </template>
@@ -14,6 +16,7 @@ import {Component, Prop} from 'vue-property-decorator';
 @Component
 export default class Type extends Vue {
      @Prop(String) value!:string
+  @Prop(String) classPrefix?:string
   changeType(type: string) {
     if (type !== '+' && type !== '-') {
       throw new Error('type is unknown');
