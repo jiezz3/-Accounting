@@ -5,7 +5,7 @@
       <Tabs class-prefix="interval" :data-source="intervalList" :value.sync="interval"/>
      <ol>
        <li v-for="(group,index) in result" :key="index">
-       <h3 class="title">{{ group.title }}</h3>
+       <h3 class="title">{{ time(group.title) }}</h3>
         <ol>
           <li class="record" v-for="(item,index) in group.items" :key="index">
            <span>{{tagString(item.tags)}}</span>
@@ -25,11 +25,31 @@ import {Component} from 'vue-property-decorator';
 import Tabs from '@/components/Tabs.vue';
 import intervalList from '@/constants/intervalList';
 import recordTypeList from '@/constants/recordTypeList';
+import {createLogger} from 'vuex';
+import dayjs from 'dayjs';
 @Component({
   components:{Tabs}
 })
 export default class Statistics extends Vue{
+  time(string:string){
+    const day =dayjs(string)
+    const now =dayjs()
+    if(day.isSame(now,'day')){
+      return '今天'
+    }else if(day.isSame(now.subtract(1,'day'),'day')){
+      return '昨天'
+    }else if(day.isSame(now.subtract(2,'day'),'day')){
+      return '前天'
+    }else if(day.isSame(now,'year')){
+      now.format('M月D日')
+    }else{
+      now.format('YYYY年M月D日')
+    }
+  }
   tagString(tags:Tag[]){
+    console.log(tags)
+   const aaa= tags.join(',')
+    console.log(aaa);
     return tags.length===0?'无':tags.join(',')
   }
   get recordList(){
