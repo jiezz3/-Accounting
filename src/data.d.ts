@@ -3,11 +3,16 @@ type RecordItem = {
   notes: string
   type: string
   amount: number
-  creatAt?: Date
+  creatAt?: string
 }
 type Tag = {
   id: string
   name: string
+}
+type RootState = {
+  recordList: RecordItem[],
+  tagList: Tag[],
+  currentTag?: Tag
 }
 type TagListModel = {
   data: Tag[]
