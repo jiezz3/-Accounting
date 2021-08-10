@@ -28,7 +28,7 @@ import {Component, Prop} from 'vue-property-decorator';
 @Component
 export default class NumberPad extends Vue {
 
-@Prop() value!:number
+@Prop(Number) value!:number
    output=this.value.toString()
   count(event: MouseEvent) {
     if (this.output.length >= 16) {return;}
@@ -45,8 +45,9 @@ export default class NumberPad extends Vue {
     this.output += input;
   }
 ok(){
-  this.$emit("update:value",this.output)
-  this.$emit('submit',this.output)
+  const number=parseFloat(this.output)
+  this.$emit("update:value",number)
+  this.$emit('submit',number)
   window.alert("提交成功")
   this.output='0'
 }
