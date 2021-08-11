@@ -1,10 +1,11 @@
 <template>
 
   <Layout class-prefix="layout">
-    <Tags/>
+    <Tags @update:selected="record.tags=$event"/>
     <Notes filename="备注" placeholder="在这里输入备注" @update:value="updateNotes"/>
     <Tabs :data-source="recordTypeList" :value.sync="record.type"/>
-    <numberPad :value.sync="record.amount" @submit="getList"/>
+    <numberPad :value.sync="record.amount" @submit="saveRecord"/>
+
   </Layout>
 </template>
 
@@ -23,8 +24,12 @@ import Tabs from '@/components/Tabs.vue';
   components: {Tabs, NumberPad, Notes, Tags},
 })
 export default class Money extends Vue {
+  get recordList() {
+    return this.$store.state.recordList;
+  }
+
   recordTypeList = recordTypeList
-  tags = window.tagList;
+
   record: RecordItem = {
     tags: [], notes: '', type: '+', amount: 0,
   };
@@ -35,7 +40,8 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
 
-  getList() {
+  saveRecord() {
+    console.log(this.record)
     this.$store.commit('createRecord', this.record);
   }
 }
